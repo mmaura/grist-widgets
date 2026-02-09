@@ -62,3 +62,4 @@ temp/
 .deploy.env
 
 *.pdf
+*.ttf
