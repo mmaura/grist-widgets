@@ -1,0 +1,19 @@
+{
+  "name": "grist-widgets",
+  "description": "",
+  "private": true,
+  "workspaces": [
+    "widgets/*"
+  ],
+  "scripts": {
+    "dev:messages": "npm run dev --workspace=messages",
+    "build:messages": "npm run build --workspace=messages",
+    "dev:helloworld": "npm run dev --workspace=helloworld",
+    "build:all": "npm run build --workspaces",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
+  },
+  "devDependencies": {
+    "prettier": "^3.8.1"
+  }
+}

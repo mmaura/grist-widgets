@@ -1,0 +1,32 @@
+{
+  "name": "messages",
+  "version": "1.0.0",
+  "description": "Permet d'avoir une série de message dans les style des messagerie instantanée avec indicateur des messages lues",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf dist node_modules/.vite",
+    "build": "npm run clean && vite build --mode production",
+    "dev": "vite",
+    "serve": "npm run clean && vite build --mode dev && vite preview --mode dev",
+    "deploy": "npm run clean && npm run build && ./deploy.sh"
+  },
+  "keywords": [],
+  "author": "MAURA Mathieu",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.7.2",
+    "ssh2-sftp-client": "^12.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4"
+  },
+  "dependencies": {
+    "grist-api": "^0.1.7",
+    "quill": "^2.0.3",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize": "^3.0.9"
+  }
+}

@@ -1,0 +1,64 @@
+# =========================
+# Node
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# Build outputs (Vite)
+# =========================
+dist/
+build/
+coverage/
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# TypeScript
+# =========================
+*.tsbuildinfo
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+.zed/
+*.swp
+*.swo
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/
+
+# =========================
+# Lockfiles (keep root one)
+# =========================
+# If you want only one lockfile at root:
+# widgets/*/package-lock.json
+
+.deploy.env
+
+*.pdf
