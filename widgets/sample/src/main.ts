@@ -1,4 +1,4 @@
-import { COLUMN_MAPPING_NAMES } from './global-data.js'
+import { COLUMN_MAPPING_NAMES } from './data.js'
 import { RowRecord } from 'grist/GristData'
 
 const element = document.getElementById('result') as HTMLDivElement

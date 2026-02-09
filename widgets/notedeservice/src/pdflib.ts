@@ -3,12 +3,7 @@ import fontkit from '@pdf-lib/fontkit'
 //const fontkit = () => import('@pdf-lib/fontkit')
 // NOTE: Les types global-types.js ne sont pas définis ici, mais sont nécessaires pour l'exécution.
 // Je les laisse pour la complétude.
-import {
-  DATA,
-  MarkdownFonts,
-  MarkdownFontsBuffer,
-  Rect,
-} from './global-types.js'
+import { DATA, MarkdownFonts, MarkdownFontsBuffer, Rect } from './types.js'
 import { ShowMessage } from './utils.js'
 
 // ----------------------------------------------------------------------

@@ -1,5 +1,5 @@
-import { COLUMN_MAPPING_NAMES } from './global-data.js'
-import { MESSAGE_ROW, MESSAGE_FETCH_TABLE } from './global-types.js'
+import { COLUMN_MAPPING_NAMES } from './data.js'
+import { MESSAGE_ROW, MESSAGE_FETCH_TABLE } from './types.js'
 import { RowRecord } from 'grist/GristData'
 import { NewRecord, Record } from 'grist/DocApiTypes'
 import { TableOperations } from 'grist/TableOperations'
@@ -221,7 +221,7 @@ async function startApp() {
 
   grist.ready({
     columns: Object.values(COLUMN_MAPPING_NAMES),
-    requiredAccess: 'read-only',
+    requiredAccess: 'read-table',
   })
 
   ChatTable = grist.getTable(ChatTableName)

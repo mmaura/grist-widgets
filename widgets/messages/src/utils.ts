@@ -1,4 +1,4 @@
-import { DATA, RefObject } from './global-types'
+import { DATA, RefObject } from './types'
 
 export async function ShowMessage(...msg: any[]) {
   if (__DEBUG__) console.log('******************', msg)

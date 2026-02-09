@@ -44,5 +44,5 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
   },
-  "include": ["src", "../../env.d.ts", "../../env.d.ts"],
+  "include": ["src", "../../env.d.ts", "../../grist-plugin-api.d.ts"],
 }

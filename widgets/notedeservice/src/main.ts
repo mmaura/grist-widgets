@@ -1,10 +1,10 @@
-import { COLUMN_MAPPING_NAMES } from './global-data.js'
+import { COLUMN_MAPPING_NAMES } from './data.js'
 import {
   ReadConfiguration,
   ShowMessage,
   uploadAttachementToGrist,
 } from './utils.js'
-import { DATA, RefObject } from './global-types.js'
+import { DATA, RefObject } from './types.js'
 import { loadPdfResources, MakePdf, PdfResources } from './pdflib.js'
 import { RowRecord } from 'grist/GristData'
 
@@ -28,7 +28,7 @@ Evenement généré en cas de modification d'un enregistrement :
 * meme par un autre utilisateur sur un autre ordinateur
 * même si un autre widget est associé pour la source de donnée
 
-par contre la ligne retournée est celle qui est séléctionnée à condition 
+par contre la ligne retournée est celle qui est séléctionnée à condition
 que tous les champs soient mappés et que le widget soit configuré avec widget lié
 */
 grist.onRecord((record: RowRecord | null) => {
