@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Note de service</title>
-    <script src="https://igrist.sdis66.fr/grist-plugin-api.js"></script>
-    <!-- <link href="ndsrh.css" rel="stylesheet" /> -->
+    <script src="%VITE_GRIST_URL%"></script>
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body style="width: 99%; height: 99%">
@@ -15,9 +14,7 @@
     <script>
       // Événements
       document.getElementById('uploadButton').addEventListener('click', () => {
-        // savePdfToGrist(blob, data, 'fichier_pdf')
         const event = new CustomEvent('pdf-upload-file')
-        // Émettre l'événement sur l'objet window pour qu'il soit facilement capté
         window.dispatchEvent(event)
       })
     </script>

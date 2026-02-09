@@ -1,8 +1,8 @@
 import { COLUMN_MAPPING_NAMES } from './global-data.js'
 import { RowRecord } from 'grist/GristData'
 
-const iframe = document.getElementById('result') as HTMLIFrameElement
-iframe.src = `${__BASE__}loading.html`
+const element = document.getElementById('result') as HTMLDivElement
+element.innerHTML = 'Loading ...<br>'
 
 if (__DEBUG__) console.log('*************************** Chargement')
 
@@ -20,21 +20,21 @@ Par contre la ligne retournée est celle qui est séléctionnée à condition
 que tous les champs soient mappés et que le widget soit configuré avec widget selecteur
 */
 grist.onRecord(async (record: RowRecord | null) => {
-  const processRecordAsync = async (record: RowRecord | null) => {
-    //mapping des colones / données
-    const data = grist.mapColumnNames(record)
-    if (__DEBUG__) console.log('****** OnRecord, mappedRecord:', data)
+  element.innerHTML += 'onRecord: ' + JSON.stringify(record) + '<br><br>'
+  //mapping des colones / données
+  const data = grist.mapColumnNames(record)
+  if (__DEBUG__) console.log('****** OnRecord, mappedRecord:', data)
 
-    // le mapping echoue si le widget n'est pas configuré
-    if (!data || data === null) {
-      console.log(
-        "*************************** Le widget n'est pas entièrement configuré.",
-      )
-      return
-    }
+  // le mapping echoue si le widget n'est pas configuré
+  if (!data || data === null) {
+    console.log(
+      "*************************** Le widget n'est pas entièrement configuré.",
+    )
+    return
   }
 })
 
 grist.onRecords((records: RowRecord[] | null) => {
   if (__DEBUG__) console.log('****** OnRecords', records)
+  element.innerHTML += 'onRecords: ' + JSON.stringify(records) + '<br><br>'
 })
