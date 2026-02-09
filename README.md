@@ -32,7 +32,7 @@ Pour utiliser sur vos propres instances Grist :
 2. Définissez la variable `VITE_GRIST_URL` vers votre serveur Grist :
 
 ```bash
-VITE_GRIST_URL=VITE_GRIST_URL=https://grist.monsite.local/grist-plugin-api.js
+VITE_GRIST_URL=https://grist.monsite.local/grist-plugin-api.js
 ```
 Si cette variable n’est pas définie, le widget utilisera par défaut le site officiel : https://docs.getgrist.com/grist-plugin-api.js
 .
@@ -54,8 +54,9 @@ Pour créer le bundle de production du widget :
 ```bash
 # Remplacez 'messages' par le nom du widget
 npm run build --workspace=messages
-```
 
+npm run build:all
+```
 Le build générera un dossier dist/ prêt à être déployé.
 
 ## Déploiement

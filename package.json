@@ -1,6 +1,6 @@
 {
   "name": "grist-widgets",
-  "description": "",
+  "description": "mmaura66 grist reporsitory",
   "private": true,
   "workspaces": [
     "widgets/*"
