@@ -31,7 +31,7 @@ Pour utiliser sur vos propres instances Grist :
 1. Créez ou modifiez le fichier `.env` à la racine de votre projet.  
 2. Définissez la variable `VITE_GRIST_URL` vers votre serveur Grist :
 
-```bash
+```sh
 VITE_GRIST_URL=https://grist.monsite.local/grist-plugin-api.js
 ```
 Si cette variable n’est pas définie, le widget utilisera par défaut le site officiel : https://docs.getgrist.com/grist-plugin-api.js

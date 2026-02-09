@@ -221,7 +221,8 @@ async function startApp() {
 
   grist.ready({
     columns: Object.values(COLUMN_MAPPING_NAMES),
-    requiredAccess: 'read-table',
+    // "full", "read table", "none"
+    requiredAccess: 'full',
   })
 
   ChatTable = grist.getTable(ChatTableName)

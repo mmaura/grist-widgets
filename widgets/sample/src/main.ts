@@ -8,7 +8,8 @@ if (__DEBUG__) console.log('*************************** Chargement')
 
 grist.ready({
   columns: Object.values(COLUMN_MAPPING_NAMES),
-  requiredAccess: 'full',
+  // "full", "read table", "none"
+  requiredAccess: 'read table',
 })
 
 /*
