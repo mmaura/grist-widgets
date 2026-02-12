@@ -39,14 +39,16 @@ const ToolbarOptions = [
     { list: 'check' },
     'link',
     'image',
-  ], // toggled buttons
+    // ], // toggled buttons
 
-  [
+    // [
     { header: [1, 2, 3, 4, 5, 6, false] },
     { size: ['small', false, 'large', 'huge'] },
-  ],
+    // ],
 
-  ['clean'], // remove formatting button
+    // [
+    'clean',
+  ], // remove formatting button
 ]
 
 const ChatTableName = 'Widget_messages'
@@ -134,11 +136,15 @@ async function MarquerCommeLu(id: number) {
 }
 
 async function AddMessageToPage(message: MESSAGE_ROW) {
+  if (__DEBUG__)
+    console.log('message fetch de la table Widget_messages==>>>', message)
+
   // Deja affiché
   if (DisplayedIds.has(message.id)) return
 
   const card = document.createElement('div')
   card.classList.add('card')
+
   if (!message.Lu) card.classList.add('nonlu')
 
   card.innerHTML = `
@@ -173,6 +179,11 @@ async function AddMessageToPage(message: MESSAGE_ROW) {
   if (container) {
     container.prepend(card)
     DisplayedIds.add(message.id)
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        card.classList.add('visible')
+      })
+    })
   }
 }
 
@@ -229,14 +240,14 @@ async function startApp() {
 
   document.getElementById('chat')!.innerHTML = `
   <div class="chat-container">
-    <div class="card form-card">
+    <div class="form-card">
       <div class="card-header">
         <span id="new-title" class="author">Nouveau Message</span>
       </div>
       <div class="card-content">
         <div class="new-message">
-          <div id="editor" class="editor-container"></div>
           <button id="add-message-btn" class="add-msg">Send</button>
+          <div id="editor" class="editor-container"></div>
         </div>
       </div>
     </div>
@@ -271,11 +282,22 @@ async function startApp() {
   })
   MyQuill.disable()
 
-  // On écoute les clics sur tout le document
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement
 
-    // Ajout Message
+    if (target && target.id === 'new-title') {
+      const card = document.querySelector('.card-content')
+      if (card) {
+        // Pas besoin de double requestAnimationFrame ici
+        // car le changement de 0fr à 1fr est géré par la transition CSS
+        card.classList.add('visible')
+
+        // Si Quill fait des siennes (curseur mal placé), force un update :
+        // quill.update();
+      }
+    }
+
+    //nouveau message
     if (target && target.id === 'add-message-btn') {
       AddMessageToBase()
     }

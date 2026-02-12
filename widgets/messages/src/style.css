@@ -63,6 +63,20 @@ body {
 
 .card-content {
   padding: 10px;
+  display: grid;
+  grid-template-rows: 0fr; /* Masqué physiquement */
+  transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.card-content.visible {
+  grid-template-rows: 1fr; /* S'ouvre selon la taille du contenu */
+  margin-top: 10px; /* Optionnel : rajoute de l'espace quand il s'ouvre */
+}
+/* L'état final une fois la classe ajoutée */
+.card-content.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .card-content p {
@@ -83,6 +97,17 @@ body {
 
 .new-message {
   display: flex;
+  min-height: 0;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+.card-content.visible .new-message {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; /* Attend un peu que la grille commence à s'ouvrir */
 }
 
 textarea {
@@ -148,8 +173,6 @@ button {
     Segoe UI Emoji,
     Segoe UI Symbol;
   overflow: hidden;
-}
-.editor-container:focus-within {
   min-height: 150px;
 }
 

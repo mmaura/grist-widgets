@@ -26,6 +26,10 @@ if [ ! -d "$WIDGET_DIR" ]; then
   exit 1
 fi
 
+# --- CLEAN -----------------------------------------------------
+echo "Clean du widget $WIDGET..."
+npm run clean --workspace=$WIDGET
+
 # --- BUILD -----------------------------------------------------
 echo "Build du widget $WIDGET..."
 npm run build --workspace=$WIDGET
@@ -43,9 +47,11 @@ REMOTE_DIR="${REMOTE_BASE}/${PROJECT_NAME}/"
 echo "Déploiement vers : $REMOTE_DIR"
 
 # --- DEPLOIEMENT -----------------------------------------------
-rsync -avz \
+rsync -avz --delete \
   -e "ssh -i $SSH_KEY" \
   "$WIDGET_DIR/dist/" \
   "${SERVER_USER}@${SERVER_HOST}:${REMOTE_DIR}"
+
+scp -i $SSH_KEY local_manifest.json "${SERVER_USER}@${SERVER_HOST}:${REMOTE_BASE}/"
 
 echo "Déploiement terminé !"
