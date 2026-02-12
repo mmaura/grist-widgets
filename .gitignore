@@ -60,6 +60,7 @@ temp/
 # widgets/*/package-lock.json
 
 .deploy.env
+local_manifest.json
 
 *.pdf
 *.ttf
