@@ -241,13 +241,13 @@ async function startApp() {
   document.getElementById('chat')!.innerHTML = `
   <div class="chat-container">
     <div class="form-card">
-      <div class="card-header">
+      <div class="card-header" id="card-header">
         <span id="new-title" class="author">Nouveau Message</span>
       </div>
       <div class="card-content">
         <div class="new-message">
-          <button id="add-message-btn" class="add-msg">Send</button>
           <div id="editor" class="editor-container"></div>
+          <button id="add-message-btn" class="add-msg">Send</button>
         </div>
       </div>
     </div>
@@ -284,13 +284,13 @@ async function startApp() {
 
   document.addEventListener('click', (event) => {
     const target = event.target as HTMLElement
+    const card = document.querySelector('.card-content')
 
-    if (target && target.id === 'new-title') {
-      const card = document.querySelector('.card-content')
+    if ((target && target.id === 'card-header') || target.id === 'new-title') {
       if (card) {
         // Pas besoin de double requestAnimationFrame ici
         // car le changement de 0fr à 1fr est géré par la transition CSS
-        card.classList.add('visible')
+        card.classList.toggle('visible')
 
         // Si Quill fait des siennes (curseur mal placé), force un update :
         // quill.update();
@@ -300,6 +300,7 @@ async function startApp() {
     //nouveau message
     if (target && target.id === 'add-message-btn') {
       AddMessageToBase()
+      card?.classList.remove('visible')
     }
   })
 
